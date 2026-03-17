@@ -75,6 +75,9 @@ h2 {
 
 .video-grid video {
   width: 100%;
+  max-width: 500px; /* Limits size so it doesn't overwhelm the page */
+  margin: auto;
+  display: block;
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
