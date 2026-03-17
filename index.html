@@ -132,13 +132,18 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('video.auto-poster').forEach(function (video) {
-        function captureFrame() {
+        function setFallback() {
+          var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360"><rect width="100%" height="100%" fill="#eeeeee"/><text x="50%" y="50%" font-size="28" fill="#666" text-anchor="middle" alignment-baseline="middle">Video</text></svg>';
+          video.setAttribute('poster', 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg));
+        }
+
+        function capture() {
           var w = video.videoWidth, h = video.videoHeight;
           if (!w || !h) {
-            // wait for metadata then try again
-            video.addEventListener('loadedmetadata', captureFrame, { once: true });
+            video.addEventListener('loadedmetadata', capture, { once: true });
             return;
           }
+
           var canvas = document.createElement('canvas');
           canvas.width = w; canvas.height = h;
           var ctx = canvas.getContext('2d');
@@ -149,39 +154,49 @@
               var data = canvas.toDataURL('image/png');
               video.setAttribute('poster', data);
             } catch (e) {
-              // ignore cross-origin or other errors
+              setFallback();
             }
           }
 
-          if (video.readyState >= 2) {
-            if (video.currentTime !== 0) {
-              var onseek = function () { drawAndSet(); video.removeEventListener('seeked', onseek); };
-              video.addEventListener('seeked', onseek);
-              try { video.currentTime = 0; } catch (e) { drawAndSet(); }
-            } else {
+          var wasMuted = video.muted;
+          // attempt muted autoplay which some browsers allow
+          video.muted = true;
+          var playPromise;
+          try { playPromise = video.play(); } catch (e) { playPromise = Promise.reject(e); }
+
+          if (playPromise && typeof playPromise.then === 'function') {
+            playPromise.then(function () {
+              // played; capture current frame
+              video.pause();
               drawAndSet();
-            }
-          } else {
-            video.addEventListener('loadeddata', function () {
-              if (video.currentTime !== 0) {
-                var onseek2 = function () { drawAndSet(); video.removeEventListener('seeked', onseek2); };
-                video.addEventListener('seeked', onseek2);
-                try { video.currentTime = 0; } catch (e) { drawAndSet(); }
-              } else {
+              video.muted = wasMuted;
+            }).catch(function () {
+              // autoplay blocked; try drawing without playing
+              if (video.readyState >= 2) {
                 drawAndSet();
+              } else {
+                video.addEventListener('loadeddata', function () { drawAndSet(); }, { once: true });
               }
-            }, { once: true });
+              video.muted = wasMuted;
+            });
+          } else {
+            if (video.readyState >= 2) {
+              drawAndSet();
+            } else {
+              video.addEventListener('loadeddata', function () { drawAndSet(); }, { once: true });
+            }
+            video.muted = wasMuted;
           }
         }
 
-        // Run capture (some browsers may block drawing until user interaction; this still works in many cases for same-origin files)
-        try { captureFrame(); } catch (e) { /* noop */ }
+        try { capture(); } catch (e) { setFallback(); }
       });
     });
   </script>
 
 </body>
 </html>
+
 
 
 
