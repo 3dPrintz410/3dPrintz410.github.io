@@ -1,27 +1,96 @@
-body {
-  font-family: Arial, sans-serif;
+/* Basic Reset */
+* {
   margin: 0;
   padding: 0;
-  background: #f2f2f2;
-  color: #333;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f2f2f2;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
 header {
-  background: #0077ff;
+  background: linear-gradient(135deg, #0077ff, #00c6ff);
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 40px 20px;
 }
 
+header .logo {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+/* Sections */
 section {
-  margin: 20px;
-  padding: 20px;
+  padding: 40px 20px;
+  max-width: 1000px;
+  margin: auto;
+  margin-bottom: 40px;
   background: white;
-  border-radius: 8px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-img {
-  margin: 10px;
-  border: 2px solid #ccc;
-  border-radius: 4px;
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #0077ff;
+}
+
+/* Gallery */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* Videos */
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media(min-width: 768px) {
+  .video-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Contact */
+#contact p {
+  text-align: center;
+  margin: 10px 0;
+}
+
+#contact a {
+  color: #0077ff;
+  text-decoration: none;
+}
+
+#contact a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #0077ff;
+  color: white;
 }
