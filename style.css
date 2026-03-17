@@ -156,6 +156,10 @@ h2 {
   border-radius: 8px;
   text-decoration: none;
   font-weight: 600;
+  font-size: 0.95rem;
+  min-width: 84px;
+  text-align: center;
+  white-space: nowrap;
   transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
@@ -237,12 +241,6 @@ h2 {
 /* Info / Services styles */
 #info .info-grid {
   display: grid;
-.social-links a {
-  font-size: 0.95rem;
-  min-width: 84px;
-  text-align: center;
-  white-space: nowrap;
-}
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 18px;
   max-width: 1000px;
