@@ -5,49 +5,129 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>3DPrintz410</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Header -->
-  <header>
+
+  <!-- Hero Section -->
+  <header class="hero">
     <img src="images/Image1.png" alt="3DPrintz410 Logo" class="logo">
     <h1>3DPrintz410</h1>
-    <p>My 3D Printing Portfolio</p>
+    <p>Custom 3D Printing Services</p>
+    <a href="mailto:ipwnedroot@pm.me?subject=Inquiry%20from%20Website" class="btn-primary">Contact Me</a>
   </header>
 
-  <!-- Gallery -->
+  <div class="shipping-note">
+    <p><strong>Shipping:</strong> I ship worldwide — costs depend on size/weight and destination. Contact me for a quote or local pickup options.</p>
+  </div>
+
+  <!-- Gallery Section -->
   <section id="gallery">
-    <h2>My Prints</h2>
-    <div class="gallery-grid">
-      <img src="images/print1.jpg" alt="Print 1">
-      <img src="images/print2.jpg" alt="Print 2">
-      <img src="images/print3.jpg" alt="Print 3">
-      <!-- Add more images here -->
+    <h2>Previous Prints</h2>
+    <div class="cards-grid">
+      <div class="card">
+        <img src="images/Image2.jpg" alt="Print 1">
+        <div class="card-info">
+          <h3>BearBrick</h3>
+          <p>Material: Hyper PLA</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/Image3.jpg" alt="Print 2">
+        <div class="card-info">
+          <h3>Venom String Art</h3>
+          <p>Material: Hyper PLA</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="images/Image4.jpg" alt="Print 3">
+        <div class="card-info">
+          <h3>Hueforge Painting</h3>
+          <p>Material: Hyper PLA</p>
+        </div>
+      </div>
+      <!-- Add more cards here -->
     </div>
   </section>
 
-  <!-- Timelapse -->
+  <!-- Timelapse Section -->
   <section id="timelapse">
     <h2>Timelapse Videos</h2>
-    <div class="video-grid">
-      <video controls>
-        <source src="videos/1771992195.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <!-- Add more local videos as needed -->
+    <div class="cards-grid">
+      <div class="card video-card">
+        <video controls>
+          <source src="videos/1771992195.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="card-info">
+          <h3>ScrubDaddy Holders</h3>
+        </div>
+      </div>
+
+      <div class="card video-card">
+        <video controls>
+          <source src="videos/1771532241.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="card-info">
+          <h3>Lithophane Photos</h3>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- Contact -->
+  <!-- Contact Section -->
+  <!-- Specs Section -->
+  <section id="specs">
+    <h2>Machine Details</h2>
+    <div class="specs-grid">
+      <div class="spec-card">
+        <h3>Printer: Creality K2</h3>
+        <ul class="specs-list">
+          <li><strong>Printing Materials:</strong> PLA, ABS, PETG, PLA-CF, PET</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Info / Services Section -->
+  <section id="info">
+    <h2>What I Print</h2>
+    <div class="info-grid">
+      <div class="info-card">
+        <h3>Custom Parts & Replacements</h3>
+        <p>Custom parts, replacement components, or any models you find online.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Found It Online?</h3>
+        <p>If you find a product online that you like, I can make a 3D printed version for you!</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Color & Material Options</h3>
+        <p>Single-color and multi-color prints available. I print using the filaments listed in the Machine Details section: PLA, ABS, PETG, PLA-CF, and PET.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
     <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:ipwnedroot@pm.me">ipwnedroot@pm.me</a></p>
-    <p>Discord: khalid#1234</p>
+    <div class="contact-info">
+      <p>Email: <a href="mailto:ipwnedroot@pm.me">ipwnedroot@pm.me</a></p>
+      <p>Discord User ID: 1231678367569285323</p>
+      <div class="social-links">
+        <a href="https://instagram.com/gavinaddis" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://telegram.me/pwnedroot" target="_blank" rel="noopener noreferrer">Telegram</a>
+      </div>
+    </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2026 3DPrintz410</p>
+    <p> 2026 3DPrintz410</p>
   </footer>
+
 </body>
 </html>
